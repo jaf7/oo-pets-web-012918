@@ -1,23 +1,27 @@
 class Owner
-  OWNERS = []
+  ALL = []
   attr_accessor :name, :pets
   attr_reader :species
 
-  def self.reset_all
-    OWNERS.clear
-  end
+  extend Persistable::ClassMethods
+  include Persistable::InstanceMethods
 
-  def self.all
-    OWNERS
-  end
-
-  def self.count
-    OWNERS.size
-  end
+  # def self.reset_all
+  #   ALL.clear
+  # end
+  #
+  # def self.all
+  #   ALL
+  # end
+  #
+  # def self.count
+  #   ALL.size
+  # end
 
   def initialize(species)
-    @species = species
-    OWNERS << self
+    super
+    @species = 'human'
+    # ALL << self
     @pets = {:fishes => [], :dogs => [], :cats => []}
   end
 
